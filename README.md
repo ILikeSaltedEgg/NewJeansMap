@@ -19,7 +19,7 @@
 
 NewJeans World Map is a fan-made interactive web application that displays which NewJeans songs are most loved in different cities worldwide. Click on pink markers scattered across the world to discover local favorites, complete with album details, reasons why fans love them, and **now with audio playback**! 🎵
 
-Built with love by Bunnies, for Bunnies 🐰💙
+Built with love by a Bunny, for Bunnies 🐰💙
 
 ---
 
