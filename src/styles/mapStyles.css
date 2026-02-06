@@ -1,0 +1,570 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* ========================================
+   MAIN WRAPPER & GLOBAL STYLES
+   ======================================== */
+.map-wrapper {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  font-family: 'Press Start 2P', monospace;
+  background: #1a1a2e;
+}
+
+/* ========================================
+   LEAFLET MAP CUSTOMIZATION
+   ======================================== */
+.leaflet-container {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+.leaflet-tile {
+  image-rendering: pixelated !important;
+}
+
+/* ========================================
+   INFO BOX (DRAGGABLE SIDEBAR)
+   ======================================== */
+.info-box {
+  position: absolute;
+  background: rgba(26, 26, 46, 0.98);
+  padding: 0;
+  border: 4px solid #00ff88;
+  border-radius: 8px;
+  z-index: 1000;
+  min-width: 360px;
+  max-width: 400px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 12px 12px 0 rgba(0, 255, 136, 0.4), 0 0 40px rgba(0, 255, 136, 0.2);
+  cursor: move;
+  transition: box-shadow 0.3s;
+}
+
+.info-box:hover {
+  box-shadow: 16px 16px 0 rgba(0, 255, 136, 0.5), 0 0 50px rgba(0, 255, 136, 0.3);
+}
+
+/* Scrollbar styling */
+.info-box::-webkit-scrollbar {
+  width: 8px;
+}
+
+.info-box::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.info-box::-webkit-scrollbar-thumb {
+  background: #00ff88;
+  border-radius: 4px;
+}
+
+.info-box::-webkit-scrollbar-thumb:hover {
+  background: #00cc6a;
+}
+
+/* ========================================
+   DRAG HANDLE
+   ======================================== */
+.drag-handle {
+  background: linear-gradient(135deg, #00ff88 0%, #00cc6a 100%);
+  padding: 14px 20px;
+  cursor: grab;
+  border-radius: 4px 4px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+}
+
+.drag-handle:active {
+  cursor: grabbing;
+  background: linear-gradient(135deg, #00cc6a 0%, #00aa55 100%);
+}
+
+.title {
+  color: #1a1a2e;
+  font-size: 10px;
+  text-align: center;
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.3);
+  font-weight: bold;
+}
+
+.bunny-icon {
+  font-size: 14px;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.drag-indicator {
+  font-size: 8px;
+  color: #1a1a2e;
+  opacity: 0.7;
+}
+
+/* ========================================
+   INFO CONTENT AREA
+   ======================================== */
+.info-content {
+  padding: 20px;
+}
+
+.city-info {
+  color: #fff;
+  font-size: 8px;
+  line-height: 1.8;
+}
+
+/* ========================================
+   WELCOME MESSAGE
+   ======================================== */
+.welcome-section {
+  background: linear-gradient(135deg, rgba(0, 255, 136, 0.08) 0%, rgba(255, 0, 128, 0.08) 100%);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 15px;
+  border: 2px solid rgba(0, 255, 136, 0.3);
+}
+
+.welcome-icon {
+  font-size: 32px;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.welcome-title {
+  color: #00ff88;
+  font-size: 10px;
+  text-align: center;
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+
+.welcome-description {
+  color: #ccc;
+  font-size: 7px;
+  line-height: 1.8;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.instructions {
+  background: rgba(0, 0, 0, 0.3);
+  border-left: 3px solid #ff0080;
+  padding: 12px;
+  margin: 15px 0;
+  border-radius: 4px;
+}
+
+.instruction-title {
+  color: #ff0080;
+  font-size: 8px;
+  margin-bottom: 8px;
+}
+
+.instruction-text {
+  color: #ddd;
+  font-size: 7px;
+  line-height: 1.8;
+}
+
+.featured-cities {
+  margin-top: 15px;
+}
+
+.featured-label {
+  color: #00ff88;
+  font-size: 7px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.cities-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.city-chip {
+  background: rgba(255, 0, 128, 0.15);
+  border: 2px solid #ff0080;
+  border-radius: 6px;
+  padding: 8px 6px;
+  text-align: center;
+  font-size: 6px;
+  transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.city-chip:hover {
+  background: rgba(255, 0, 128, 0.25);
+  transform: translateY(-2px);
+}
+
+.city-emoji {
+  font-size: 14px;
+}
+
+.city-chip-name {
+  color: #fff;
+}
+
+.stats-box {
+  background: linear-gradient(135deg, rgba(0, 255, 136, 0.15) 0%, rgba(0, 255, 136, 0.05) 100%);
+  border: 2px solid #00ff88;
+  border-radius: 8px;
+  padding: 15px;
+  text-align: center;
+  font-size: 8px;
+  color: #fff;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.stats-icon {
+  font-size: 20px;
+}
+
+.stats-text {
+  line-height: 1.6;
+}
+
+.fun-facts {
+  background: rgba(255, 0, 128, 0.08);
+  border: 2px dashed #ff0080;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 15px;
+}
+
+.fun-fact-title {
+  color: #ff0080;
+  font-size: 8px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.fun-fact-list {
+  margin: 0;
+  padding-left: 20px;
+  color: #ddd;
+  font-size: 6px;
+  line-height: 2;
+}
+
+.fun-fact-list li {
+  margin-bottom: 5px;
+}
+
+/* ========================================
+   CITY DETAILS (SELECTED CITY)
+   ======================================== */
+.song-card {
+  background: linear-gradient(135deg, rgba(255, 0, 128, 0.15) 0%, rgba(255, 0, 128, 0.05) 100%);
+  border: 2px solid #ff0080;
+  border-radius: 8px;
+  padding: 18px;
+  margin: 15px 0;
+  box-shadow: 0 4px 10px rgba(255, 0, 128, 0.2);
+}
+
+.city-name {
+  color: #00ff88;
+  margin-bottom: 12px;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.city-text {
+  flex: 1;
+}
+
+.song-title {
+  font-size: 12px;
+  margin-bottom: 10px;
+  color: #fff;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.album-info {
+  font-size: 7px;
+  margin-top: 8px;
+  color: #ff0080;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.reason-box {
+  margin-top: 15px;
+  padding: 12px;
+  background: rgba(0, 255, 136, 0.05);
+  border-radius: 6px;
+  border-left: 3px solid #00ff88;
+}
+
+.reason-label {
+  color: #00ff88;
+  margin-bottom: 8px;
+  font-size: 7px;
+}
+
+.reason-text {
+  color: #ccc;
+  font-size: 7px;
+  line-height: 1.8;
+}
+
+/* ========================================
+   BUTTONS
+   ======================================== */
+.submit-btn {
+  border: none;
+  padding: 12px 20px;
+  cursor: pointer;
+  font-family: 'Press Start 2P';
+  font-size: 8px;
+  margin-top: 10px;
+  width: 100%;
+  transition: all 0.3s ease;
+  border-radius: 6px;
+  border: 2px solid;
+}
+
+.submit-btn.primary {
+  background: linear-gradient(135deg, #ff0080 0%, #cc0066 100%);
+  color: #fff;
+  border-color: #ff0080;
+  box-shadow: 0 4px 8px rgba(255, 0, 128, 0.3);
+}
+
+.submit-btn.primary:hover {
+  background: linear-gradient(135deg, #00ff88 0%, #00cc6a 100%);
+  border-color: #00ff88;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 255, 136, 0.4);
+}
+
+.submit-btn.secondary {
+  background: linear-gradient(135deg, #666 0%, #444 100%);
+  color: #fff;
+  border-color: #888;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.submit-btn.secondary:hover {
+  background: linear-gradient(135deg, #777 0%, #555 100%);
+  transform: translateY(-2px);
+}
+
+/* ========================================
+   SUBMISSIONS BADGE
+   ======================================== */
+.submissions-badge {
+  margin-top: 15px;
+  font-size: 6px;
+  color: #00ff88;
+  text-align: center;
+  padding: 10px;
+  background: rgba(0, 255, 136, 0.1);
+  border-radius: 6px;
+  border: 2px dashed #00ff88;
+}
+
+/* ========================================
+   MODAL & OVERLAY
+   ======================================== */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 1999;
+  backdrop-filter: blur(4px);
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  padding: 0;
+  border: 4px solid #ff0080;
+  z-index: 2000;
+  box-shadow: 0 20px 60px rgba(255, 0, 128, 0.4), 0 0 80px rgba(0, 255, 136, 0.2);
+  max-width: 500px;
+  width: 90%;
+  border-radius: 12px;
+  overflow: hidden;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-header {
+  background: linear-gradient(135deg, #ff0080 0%, #cc0066 100%);
+  padding: 25px;
+  text-align: center;
+}
+
+.modal-title {
+  color: #fff;
+  font-size: 11px;
+  margin: 0 0 10px 0;
+  text-shadow: 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.modal-subtitle {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 7px;
+  margin: 0;
+  font-family: 'Press Start 2P';
+  line-height: 1.6;
+}
+
+.modal-content {
+  padding: 30px;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* ========================================
+   FORM INPUTS
+   ======================================== */
+.form-input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  background: rgba(15, 52, 96, 0.8);
+  border: 2px solid #00ff88;
+  color: #fff;
+  font-family: 'Press Start 2P';
+  font-size: 8px;
+  box-sizing: border-box;
+  border-radius: 6px;
+  transition: all 0.3s;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #ff0080;
+  background: rgba(15, 52, 96, 1);
+  box-shadow: 0 0 15px rgba(255, 0, 128, 0.3);
+}
+
+.form-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 80px;
+  line-height: 1.6;
+}
+
+/* ========================================
+   MAP POPUP CUSTOMIZATION
+   ======================================== */
+.leaflet-popup-content-wrapper {
+  background: #1a1a2e;
+  color: #00ff88;
+  border: 3px solid #ff0080;
+  border-radius: 8px;
+  font-family: 'Press Start 2P';
+  box-shadow: 6px 6px 0 rgba(255, 0, 128, 0.4);
+}
+
+.leaflet-popup-content {
+  margin: 15px;
+  font-size: 8px;
+  line-height: 1.8;
+}
+
+.leaflet-popup-tip {
+  background: #ff0080;
+}
+
+.popup-content {
+  min-width: 180px;
+}
+
+.popup-city {
+  color: #00ff88;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.popup-song {
+  color: #fff;
+  margin: 6px 0;
+  font-size: 9px;
+}
+
+.popup-album {
+  color: #ff0080;
+  margin: 6px 0;
+  font-size: 7px;
+}
+
+.popup-reason {
+  color: #ccc;
+  margin-top: 8px;
+  font-size: 6px;
+  line-height: 1.6;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* ========================================
+   MARKER HOVER EFFECT
+   ======================================== */
+.city-marker {
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.city-marker:hover {
+  transform: scale(1.3);
+}
+
+/* ========================================
+   RESPONSIVE ADJUSTMENTS
+   ======================================== */
+@media (max-width: 768px) {
+  .info-box {
+    min-width: 300px;
+    max-width: 90vw;
+  }
+  
+  .modal {
+    width: 95%;
+    max-width: none;
+  }
+  
+  .cities-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
