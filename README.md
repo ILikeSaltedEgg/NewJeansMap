@@ -317,7 +317,7 @@ Contributions welcome! 🐰
 
 ## 📜 License
 
-MIT License - Free to use and modify!
+Apache License
 
 ---
 
