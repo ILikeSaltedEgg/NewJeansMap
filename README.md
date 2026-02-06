@@ -28,7 +28,7 @@ Built with love by Bunnies, for Bunnies 🐰💙
 ### 🎯 Interactive Map
 - **36+ Cities Worldwide** - Pre-loaded with favorite songs from major cities
 - **Clickable Markers** - Pink circular markers on the map
-- **🎵 Audio Playback** - Click a city to hear a preview of their favorite song! ✨ NEW
+- **🎵 Audio Playback** - Click a city to hear a preview of their favorite song! / NEW
 - **Two Display Modes** - Click shows info in both popup AND draggable panel
 - **Smooth Navigation** - Pan, zoom, and explore the world
 
@@ -42,10 +42,10 @@ Built with love by Bunnies, for Bunnies 🐰💙
 ### 🎵 Song Information
 Each city displays:
 - 📍 City name and location
-- 🎵 Favorite NewJeans song with **play/pause button** ✨ NEW
+- 🎵 Favorite NewJeans song with **play/pause button** / NEW
 - 💿 Album name
 - 💭 Reason why it's loved
-- 🔊 Audio visualization while playing ✨ NEW
+- 🔊 Audio visualization while playing / NEW
 
 ### 🌐 Community Features
 - **Submit Your City** - Add your city's favorite song
@@ -150,7 +150,7 @@ newjeans-world-map/
 ├── public/
 │   ├── favicon.ico
 │   ├── index.html
-│   ├── audio/                    # ✨ NEW - Audio files folder
+│   ├── audio/                    # / NEW - Audio files folder
 │   │   ├── super-shy.mp3
 │   │   ├── hype-boy.mp3
 │   │   ├── ditto.mp3
@@ -159,17 +159,17 @@ newjeans-world-map/
 │   │   └── ...
 │   └── ...
 ├── src/
-│   ├── components/               # ✨ NEW - Organized components
+│   ├── components/               # / NEW - Organized components
 │   │   ├── InfoBox.jsx          # Draggable sidebar
 │   │   ├── CityDetails.jsx      # Selected city display
 │   │   ├── WelcomeMessage.jsx   # Enhanced welcome screen
 │   │   ├── SubmitModal.jsx      # Submission form
 │   │   └── MapPopup.jsx         # Map marker popup
-│   ├── data/                     # ✨ NEW - Data layer
+│   ├── data/                     # / NEW - Data layer
 │   │   └── cityData.js          # All city information
-│   ├── styles/                   # ✨ NEW - Styles layer
+│   ├── styles/                   # / NEW - Styles layer
 │   │   └── mapStyles.css        # Organized CSS
-│   ├── NewJeansMap.jsx          # ✨ Main component (refactored)
+│   ├── NewJeansMap.jsx          # / Main component (refactored)
 │   ├── App.js
 │   ├── App.css
 │   ├── index.js
@@ -198,9 +198,9 @@ newjeans-map-backend/
 3. **Find pink circles** on the world map
 4. **Click a circle** to:
    - See the city's favorite song
-   - **🎵 Hear the song play automatically!** ✨ NEW
+   - **🎵 Hear the song play automatically!** / NEW
    - View in both popup AND draggable info panel
-5. **Control playback** with play/pause button in the info panel ✨ NEW
+5. **Control playback** with play/pause button in the info panel / NEW
 6. **Drag the info box** by grabbing the green header
 7. **Close** with the "✕ Close" button
 
@@ -218,28 +218,7 @@ newjeans-map-backend/
 
 ---
 
-## 🎵 Audio Setup (NEW!)
-
-To enable audio playback when clicking cities:
-
-### 1. Create Audio Folder
-```bash
-mkdir public/audio
-```
-
-### 2. Add Song Files
-Add NewJeans song previews (30-60 seconds) to `public/audio/`:
-- `super-shy.mp3`
-- `hype-boy.mp3`
-- `ditto.mp3`
-- `omg.mp3`
-- `attention.mp3`
-- `cool-with-you.mp3`
-- `eta.mp3`
-- `asap.mp3`
-- `new-jeans.mp3`
-
-### 3. Audio Features
+### 1. Audio Features
 - ✅ **Auto-play** when city is selected
 - ✅ **Play/Pause button** in info panel
 - ✅ **Visual indicator** when playing
@@ -343,7 +322,7 @@ export const cityData = [
     song: "Song Name", 
     album: "Album Name", 
     reason: "Detailed reason why this song is loved here!",
-    audioFile: "song-name.mp3" // ✨ NEW - Audio file name
+    audioFile: "song-name.mp3" //  NEW - Audio file name
   },
   // ... more cities
 ];
@@ -397,7 +376,7 @@ Edit `src/NewJeansMap.jsx`:
 - React 18.2.0
 - Leaflet.js 1.9+
 - React-Leaflet
-- HTML5 Audio API ✨ NEW
+- HTML5 Audio API / NEW
 
 **Backend:**
 - Node.js
@@ -461,10 +440,9 @@ import NewJeansMap from './NewJeansMap'; // Capital N!
 - [x] Interactive world map with 36+ cities
 - [x] Draggable info panel
 - [x] Community submissions
-- [x] Backend API
 - [x] Refactored modular architecture
 - [x] Enhanced welcome screen
-- [x] Audio playback ✨
+- [x] Audio playback 
 
 ### Coming Soon 🚀
 - [ ] 🎚️ Volume control & progress bar
