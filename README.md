@@ -547,7 +547,7 @@ This project is licensed under the Apache License 2.0.
 
 <div align="center">
 
-### Made with 💙 by Bunnies, for Bunnies
+### Made with 💙 by ILikeSaltedEgg a Bunny, for Bunnies
 
 **NewJeans forever!** 🐰🎵
 
