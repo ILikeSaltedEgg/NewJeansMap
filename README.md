@@ -235,8 +235,6 @@ newjeans-map-backend/
 - **Bunnies** - Worldwide fanbase community
 - **OpenStreetMap Contributors** - Map data
 - **Leaflet.js Team** - Mapping library
-- **React Team** - UI framework
-- **All Contributors** - Thank you! 💙
 
 ---
 
