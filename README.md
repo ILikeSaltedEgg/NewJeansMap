@@ -47,12 +47,6 @@ Each city displays:
 - 💭 Reason why it's loved
 - 🔊 Audio visualization while playing / NEW
 
-### 🌐 Community Features
-- **Submit Your City** - Add your city's favorite song
-- **Backend API** - Store and retrieve submissions
-- **Real-time Updates** - See community contributions
-- **Enhanced Form** - Textarea for detailed reasons
-
 ### 🏗️ Clean Architecture
 - **Modular Components** - Separated into logical, reusable pieces
 - **Organized File Structure** - Easy to navigate and maintain
