@@ -9,7 +9,7 @@
 
 **An interactive world map showcasing favorite NewJeans songs from cities around the globe!**
 
-[Features](#-features) • [Installation](#-installation) • [Usage](#-usage) • [API](#-api-documentation) • [Contributing](#-contributing)
+[Features](#-features) • [Installation](#-installation) • [Project Structure](#-project-structure) • [Usage](#-usage) • [API](#-api-documentation) • [Contributing](#-contributing)
 
 </div>
 
@@ -17,7 +17,7 @@
 
 ## 📖 About
 
-NewJeans World Map is a fan-made interactive web application that displays which NewJeans songs are most loved in different cities worldwide. Click on pink markers scattered across the world to discover local favorites, complete with album details and reasons why fans love them!
+NewJeans World Map is a fan-made interactive web application that displays which NewJeans songs are most loved in different cities worldwide. Click on pink markers scattered across the world to discover local favorites, complete with album details, reasons why fans love them, and **now with audio playback**! 🎵
 
 Built with love by Bunnies, for Bunnies 🐰💙
 
@@ -28,26 +28,36 @@ Built with love by Bunnies, for Bunnies 🐰💙
 ### 🎯 Interactive Map
 - **36+ Cities Worldwide** - Pre-loaded with favorite songs from major cities
 - **Clickable Markers** - Pink circular markers on the map
+- **🎵 Audio Playback** - Click a city to hear a preview of their favorite song! ✨ NEW
 - **Two Display Modes** - Click shows info in both popup AND draggable panel
 - **Smooth Navigation** - Pan, zoom, and explore the world
 
 ### 🎨 Beautiful Design
 - **Pixelated Retro Aesthetic** - 8-bit style with modern gradients
 - **Draggable Info Box** - Move the info panel anywhere on screen
+- **Enhanced Welcome Screen** - Comprehensive guide with featured cities
 - **Animated Elements** - Bouncing bunnies, glowing buttons, smooth transitions
 - **Responsive Layout** - Works on desktop and mobile
 
 ### 🎵 Song Information
 Each city displays:
 - 📍 City name and location
-- 🎵 Favorite NewJeans song
+- 🎵 Favorite NewJeans song with **play/pause button** ✨ NEW
 - 💿 Album name
 - 💭 Reason why it's loved
+- 🔊 Audio visualization while playing ✨ NEW
 
 ### 🌐 Community Features
 - **Submit Your City** - Add your city's favorite song
 - **Backend API** - Store and retrieve submissions
 - **Real-time Updates** - See community contributions
+- **Enhanced Form** - Textarea for detailed reasons
+
+### 🏗️ Clean Architecture
+- **Modular Components** - Separated into logical, reusable pieces
+- **Organized File Structure** - Easy to navigate and maintain
+- **Professional Code Quality** - Best practices throughout
+- **Well-Documented** - Clear comments and documentation
 
 ---
 
@@ -99,15 +109,32 @@ cd newjeans-world-map
 # 2. Install map libraries
 npm install leaflet react-leaflet
 
-# 3. Copy files:
-# - newjeans-map.jsx → src/
-# - App.js → src/
-# - App.css → src/
-# - index.js → src/
-# - index.css → src/
-# - index.html → public/
+# 3. Create folder structure:
+mkdir src/components
+mkdir src/data
+mkdir src/styles
 
-# 4. Start the frontend
+# 4. Copy refactored files:
+# Main component:
+#   - NewJeansMap.jsx → src/
+#
+# Components:
+#   - InfoBox.jsx → src/components/
+#   - CityDetails.jsx → src/components/
+#   - WelcomeMessage.jsx → src/components/
+#   - SubmitModal.jsx → src/components/
+#   - MapPopup.jsx → src/components/
+#
+# Data:
+#   - cityData.js → src/data/
+#
+# Styles:
+#   - mapStyles.css → src/styles/
+#
+# Other:
+#   - Update App.js import to: import NewJeansMap from './NewJeansMap';
+
+# 5. Start the frontend
 npm start
 ```
 
@@ -117,22 +144,48 @@ npm start
 
 ## 📁 Project Structure
 
+### Frontend (React)
 ```
 newjeans-world-map/
-├── src/
-│   ├── newjeans-map.jsx    # Main map component ⭐
-│   ├── App.js               # App wrapper
-│   ├── App.css              # App styles
-│   ├── index.js             # React entry point
-│   └── index.css            # Global styles
 ├── public/
-│   └── index.html           # HTML template
+│   ├── favicon.ico
+│   ├── index.html
+│   ├── audio/                    # ✨ NEW - Audio files folder
+│   │   ├── super-shy.mp3
+│   │   ├── hype-boy.mp3
+│   │   ├── ditto.mp3
+│   │   ├── omg.mp3
+│   │   ├── attention.mp3
+│   │   └── ...
+│   └── ...
+├── src/
+│   ├── components/               # ✨ NEW - Organized components
+│   │   ├── InfoBox.jsx          # Draggable sidebar
+│   │   ├── CityDetails.jsx      # Selected city display
+│   │   ├── WelcomeMessage.jsx   # Enhanced welcome screen
+│   │   ├── SubmitModal.jsx      # Submission form
+│   │   └── MapPopup.jsx         # Map marker popup
+│   ├── data/                     # ✨ NEW - Data layer
+│   │   └── cityData.js          # All city information
+│   ├── styles/                   # ✨ NEW - Styles layer
+│   │   └── mapStyles.css        # Organized CSS
+│   ├── NewJeansMap.jsx          # ✨ Main component (refactored)
+│   ├── App.js
+│   ├── App.css
+│   ├── index.js
+│   └── index.css
 └── package.json
 
 newjeans-map-backend/
-├── server.js                # Express server ⭐
+├── server.js                     # Express server
 └── package.json
 ```
+
+### Key Improvements in Structure
+- **Separated Components** - Each component has a single responsibility
+- **Data Layer** - City data separated from logic
+- **Styles Layer** - All CSS organized in one place
+- **Modular Architecture** - Easy to maintain and extend
 
 ---
 
@@ -141,21 +194,60 @@ newjeans-map-backend/
 ### Exploring the Map
 
 1. **Open** `http://localhost:3000`
-2. **Find pink circles** on the world map
-3. **Click a circle** to see the city's favorite song
-4. **Drag the info box** by grabbing the green header
-5. **Close** with the "✕ Close" button
+2. **Read the welcome message** with instructions and featured cities
+3. **Find pink circles** on the world map
+4. **Click a circle** to:
+   - See the city's favorite song
+   - **🎵 Hear the song play automatically!** ✨ NEW
+   - View in both popup AND draggable info panel
+5. **Control playback** with play/pause button in the info panel ✨ NEW
+6. **Drag the info box** by grabbing the green header
+7. **Close** with the "✕ Close" button
 
 ### Adding Your City
 
 1. Click **"➕ Submit Your City! 🎵"**
-2. Fill in the form:
-   - 🌆 City name
-   - 🎵 Favorite song
-   - 💿 Album
-   - 💭 Reason
-   - 👤 Your nickname
+2. Fill in the enhanced form:
+   - 🌆 City, Country name
+   - 🎵 Favorite NewJeans song
+   - 💿 Album name
+   - 💭 Detailed reason (textarea)
+   - 👤 Your Bunny nickname
 3. Click **"✓ Submit 🐰"**
+4. See your submission count update!
+
+---
+
+## 🎵 Audio Setup (NEW!)
+
+To enable audio playback when clicking cities:
+
+### 1. Create Audio Folder
+```bash
+mkdir public/audio
+```
+
+### 2. Add Song Files
+Add NewJeans song previews (30-60 seconds) to `public/audio/`:
+- `super-shy.mp3`
+- `hype-boy.mp3`
+- `ditto.mp3`
+- `omg.mp3`
+- `attention.mp3`
+- `cool-with-you.mp3`
+- `eta.mp3`
+- `asap.mp3`
+- `new-jeans.mp3`
+
+### 3. Audio Features
+- ✅ **Auto-play** when city is selected
+- ✅ **Play/Pause button** in info panel
+- ✅ **Visual indicator** when playing
+- ✅ **Smooth transitions** between songs
+- ✅ **Volume control** (optional)
+- ✅ **Progress bar** (optional)
+
+**Note:** For copyright compliance, use 30-second previews or official snippets only!
 
 ---
 
@@ -173,6 +265,22 @@ http://localhost:3001
 GET /api/submissions
 ```
 
+**Response:**
+```json
+[
+  {
+    "id": "1738847284736",
+    "country": "Seoul, Korea",
+    "songName": "Ditto",
+    "album": "OMG",
+    "reason": "Home country favorite!",
+    "submitterName": "Bunny123",
+    "status": "pending",
+    "timestamp": "2025-02-06T12:34:44.736Z"
+  }
+]
+```
+
 #### Submit New City
 ```http
 POST /api/submissions
@@ -182,7 +290,7 @@ Content-Type: application/json
   "country": "Seoul, Korea",
   "songName": "Ditto",
   "album": "OMG",
-  "reason": "Home country favorite!",
+  "reason": "Home country favorite! The nostalgic vibes match Korea's sentiment.",
   "submitterName": "Bunny123"
 }
 ```
@@ -211,22 +319,31 @@ DELETE /api/submissions/:id
 GET /health
 ```
 
+**Response:**
+```json
+{
+  "status": "healthy",
+  "message": "NewJeans World Map API is running! 🐰"
+}
+```
+
 ---
 
 ## 🎨 Customization
 
 ### Adding More Cities
 
-Edit `newjeans-map.jsx`:
+Edit `src/data/cityData.js`:
 
 ```javascript
-const cityData = [
+export const cityData = [
   { 
-    name: "Your City", 
+    name: "Your City, Country", 
     coords: [latitude, longitude], 
     song: "Song Name", 
-    album: "Album", 
-    reason: "Why!" 
+    album: "Album Name", 
+    reason: "Detailed reason why this song is loved here!",
+    audioFile: "song-name.mp3" // ✨ NEW - Audio file name
   },
   // ... more cities
 ];
@@ -236,15 +353,39 @@ Find coordinates at [LatLong.net](https://www.latlong.net/)
 
 ### Changing Colors
 
-- `#00ff88` - Mint green (primary)
-- `#ff0080` - Hot pink (secondary)
-- `#1a1a2e` - Dark background
+Edit `src/styles/mapStyles.css`:
 
-### Marker Size
+```css
+/* Primary Colors */
+--mint-green: #00ff88;    /* Primary accent */
+--hot-pink: #ff0080;      /* Secondary accent */
+--dark-bg: #1a1a2e;       /* Background */
+--darker-bg: #16213e;     /* Darker sections */
+```
+
+### Customizing Components
+
+Each component is in its own file for easy customization:
+
+- **Welcome Screen** → `src/components/WelcomeMessage.jsx`
+- **City Details** → `src/components/CityDetails.jsx`
+- **Submit Form** → `src/components/SubmitModal.jsx`
+- **Info Box** → `src/components/InfoBox.jsx`
+- **Map Popup** → `src/components/MapPopup.jsx`
+
+### Marker Customization
+
+Edit `src/NewJeansMap.jsx`:
 
 ```javascript
 <CircleMarker
-  radius={8}  // Change this
+  radius={8}              // Size
+  pathOptions={{
+    fillColor: '#ff0080', // Fill color
+    fillOpacity: 0.8,     // Transparency
+    color: '#00ff88',     // Border color
+    weight: 2             // Border width
+  }}
 />
 ```
 
@@ -252,10 +393,33 @@ Find coordinates at [LatLong.net](https://www.latlong.net/)
 
 ## 🛠️ Tech Stack
 
-**Frontend:** React, Leaflet.js, React-Leaflet  
-**Backend:** Node.js, Express, CORS  
-**Styling:** CSS3, Google Fonts (Press Start 2P)  
-**Maps:** OpenStreetMap tiles  
+**Frontend:**
+- React 18.2.0
+- Leaflet.js 1.9+
+- React-Leaflet
+- HTML5 Audio API ✨ NEW
+
+**Backend:**
+- Node.js
+- Express
+- CORS
+- Body-Parser
+
+**Styling:**
+- CSS3 with CSS Variables
+- Google Fonts (Press Start 2P)
+- Flexbox & Grid Layouts
+- CSS Animations & Transitions
+
+**Maps:**
+- OpenStreetMap tiles
+- Leaflet CircleMarker API
+
+**Architecture:**
+- Component-Based Design
+- Separation of Concerns
+- Modular File Structure
+- Clean Code Principles
 
 ---
 
@@ -263,23 +427,58 @@ Find coordinates at [LatLong.net](https://www.latlong.net/)
 
 | Issue | Solution |
 |-------|----------|
-| Map not loading | Check internet connection |
+| Map not loading | Check internet connection for OSM tiles |
 | "Cannot GET /" | Restart backend: `node server.js` |
-| Markers not showing | Check browser console (F12) |
-| Port 3000 in use | Type `Y` when prompted |
-| Can't drag info box | Click the green header bar |
+| Markers not showing | Check browser console (F12) for errors |
+| Port 3000 in use | Type `Y` when prompted or use different port |
+| Can't drag info box | Click and hold the **green header bar** |
+| Components not found | Check file paths match structure |
+| Audio not playing | Verify audio files are in `public/audio/` |
+| Audio files not found | Check file names match exactly (case-sensitive) |
+| Styles not loading | Verify `mapStyles.css` import in `NewJeansMap.jsx` |
+
+### Common Import Errors
+
+Make sure your `App.js` has:
+```javascript
+import NewJeansMap from './NewJeansMap'; // Capital N!
+```
 
 ---
 
-## 🔮 Future Features
+## 📚 Documentation
 
-- [ ] 🎵 Audio playback
-- [ ] 🗄️ Database integration
-- [ ] 🔐 User accounts
-- [ ] 📊 Statistics & charts
-- [ ] 🌓 Dark/light mode
-- [ ] 📱 Mobile app
-- [ ] 🌍 100+ cities
+- **README.md** - This file (overview and setup)
+- **STRUCTURE_COMPARISON.md** - Before/after refactoring details
+- **INTEGRATION_GUIDE.md** - Step-by-step integration into existing project
+- **FILE_MAPPING.md** - Visual guide for file placement
+
+---
+
+## 🔮 Roadmap
+
+### Implemented ✅
+- [x] Interactive world map with 36+ cities
+- [x] Draggable info panel
+- [x] Community submissions
+- [x] Backend API
+- [x] Refactored modular architecture
+- [x] Enhanced welcome screen
+- [x] Audio playback ✨
+
+### Coming Soon 🚀
+- [ ] 🎚️ Volume control & progress bar
+- [ ] 🔀 Shuffle between random cities
+- [ ] 🗄️ Database integration (MongoDB/PostgreSQL)
+- [ ] 🔐 User authentication & profiles
+- [ ] 📊 Statistics dashboard (most popular songs, albums)
+- [ ] 🌓 Dark/light mode toggle
+- [ ] 📱 React Native mobile app
+- [ ] 🌍 100+ cities coverage
+- [ ] 🎬 Music video thumbnails
+- [ ] 💬 Comments & ratings per city
+- [ ] 🔍 Search & filter functionality
+- [ ] 🌐 Multi-language support
 
 ---
 
@@ -287,37 +486,84 @@ Find coordinates at [LatLong.net](https://www.latlong.net/)
 
 Contributions welcome! 🐰
 
-1. Fork the repo
-2. Create a branch: `git checkout -b feature/AmazingFeature`
-3. Commit: `git commit -m 'Add feature'`
-4. Push: `git push origin feature/AmazingFeature`
-5. Open a Pull Request
+### How to Contribute
+
+1. **Fork** the repository
+2. **Create** a branch: `git checkout -b feature/AmazingFeature`
+3. **Make** your changes
+4. **Test** thoroughly
+5. **Commit**: `git commit -m 'Add some AmazingFeature'`
+6. **Push**: `git push origin feature/AmazingFeature`
+7. **Open** a Pull Request
+
+### Contribution Ideas
+- Add more cities to `cityData.js`
+- Improve UI/UX design
+- Add new features (see Roadmap)
+- Fix bugs
+- Improve documentation
+- Add translations
+- Optimize performance
+
+### Code Style
+- Use ES6+ JavaScript
+- Follow React best practices
+- Keep components small and focused
+- Write descriptive commit messages
+- Comment complex logic
 
 ---
 
 ## 📊 Statistics
 
 - **36 Cities** across 6 continents
-- **8 NewJeans Songs** featured
+- **9 NewJeans Songs** featured
 - **3 Albums** (New Jeans, OMG, Get Up)
+- **5+ Components** modular architecture
 - **100% Open Source** 💙
+- **Audio Playback** enabled 🎵
+
+### Popular Songs
+1. **Super Shy** - 8 cities
+2. **Hype Boy** - 7 cities  
+3. **Attention** - 6 cities
+4. **Ditto** - 6 cities
+5. **OMG** - 5 cities
+
+### Regional Favorites
+- **Asia** → Ditto, OMG
+- **North America** → Super Shy, Hype Boy
+- **Europe** → Attention, Cool With You
+- **Oceania** → Super Shy
+- **South America** → Hype Boy
 
 ---
 
 ## 🙏 Acknowledgments
 
-- **NewJeans** - For the amazing music! 🐰
+- **NewJeans** (민지, 하니, 다니엘, 해린, 혜인) - For the incredible music! 🐰
 - **ADOR** - NewJeans' label
-- **Bunnies** - Worldwide fanbase
-- **OpenStreetMap** - Map data
-- **Leaflet.js** - Mapping library
+- **Bunnies** - Worldwide fanbase community
+- **OpenStreetMap Contributors** - Map data
+- **Leaflet.js Team** - Mapping library
 - **React Team** - UI framework
+- **All Contributors** - Thank you! 💙
 
 ---
 
 ## 📜 License
 
-Apache License
+This project is licensed under the Apache License 2.0.
+
+**Note:** This is a fan-made project. All NewJeans songs, names, and related content are owned by ADOR/HYBE. This project is for educational and fan community purposes only.
+
+---
+
+## 📞 Contact & Support
+
+- **Issues** - Report bugs via GitHub Issues
+- **Questions** - Start a discussion
+- **Updates** - Watch the repository for new features
 
 ---
 
@@ -326,6 +572,12 @@ Apache License
 ### Made with 💙 by Bunnies, for Bunnies
 
 **NewJeans forever!** 🐰🎵
+
+*"We never go out of style!"*
+
+---
+
+⭐ **Star this repo if you love NewJeans!** ⭐
 
 [⬆ Back to Top](#-newjeans-world-map-)
 
