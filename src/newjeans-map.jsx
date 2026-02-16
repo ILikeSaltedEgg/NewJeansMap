@@ -8,13 +8,11 @@ const cityData = [
   { name: "Los Angeles, USA", coords: [34.0522, -118.2437], song: "Hype Boy", album: "New Jeans", reason: "West Coast vibes" },
   { name: "Toronto, Canada", coords: [43.6532, -79.3832], song: "OMG", album: "OMG", reason: "Winter anthem here!" },
   { name: "Mexico City, Mexico", coords: [19.4326, -99.1332], song: "Attention", album: "New Jeans", reason: "Dance challenge went viral!" },
-  
 
   { name: "São Paulo, Brazil", coords: [-23.5505, -46.6333], song: "Hype Boy", album: "New Jeans", reason: "TikTok sensation!" },
   { name: "Buenos Aires, Argentina", coords: [-34.6037, -58.3816], song: "Super Shy", album: "Get Up", reason: "Radio favorite" },
   { name: "Bogotá, Colombia", coords: [4.7110, -74.0721], song: "Attention", album: "New Jeans", reason: "Colombian Bunnies unite!" },
   
-  // Europe
   { name: "London, UK", coords: [51.5074, -0.1278], song: "Ditto", album: "OMG", reason: "That nostalgic MV aesthetic" },
   { name: "Paris, France", coords: [48.8566, 2.3522], song: "Attention", album: "New Jeans", reason: "Très chic!" },
   { name: "Berlin, Germany", coords: [52.5200, 13.4050], song: "Cool With You", album: "Get Up", reason: "Nighttime city vibes" },
@@ -23,7 +21,6 @@ const cityData = [
   { name: "Amsterdam, Netherlands", coords: [52.3676, 4.9041], song: "OMG", album: "OMG", reason: "Chart topper!" },
   { name: "Stockholm, Sweden", coords: [59.3293, 18.0686], song: "Super Shy", album: "Get Up", reason: "Nordic K-pop love" },
   
-  // Asia - THE MAIN REGION!
   { name: "Seoul, South Korea 🇰🇷", coords: [37.5665, 126.9780], song: "Ditto", album: "OMG", reason: "HOME OF NEWJEANS! 🐰💙" },
   { name: "Tokyo, Japan", coords: [35.6762, 139.6503], song: "OMG", album: "OMG", reason: "Massive on Japanese charts!" },
   { name: "Osaka, Japan", coords: [34.6937, 135.5023], song: "Super Shy", album: "Get Up", reason: "Kansai loves it!" },
@@ -40,16 +37,13 @@ const cityData = [
   { name: "Mumbai, India", coords: [19.0760, 72.8777], song: "ASAP", album: "Get Up", reason: "Upbeat energy!" },
   { name: "Delhi, India", coords: [28.7041, 77.1025], song: "Hype Boy", album: "New Jeans", reason: "North India fav" },
   
-  // Oceania
   { name: "Sydney, Australia", coords: [-33.8688, 151.2093], song: "Super Shy", album: "Get Up", reason: "Summer anthem!" },
   { name: "Melbourne, Australia", coords: [-37.8136, 144.9631], song: "Cool With You", album: "Get Up", reason: "Melbourne vibes" },
   { name: "Auckland, New Zealand", coords: [-36.8485, 174.7633], song: "Ditto", album: "OMG", reason: "Kiwi Bunnies" },
   
-  // Middle East
   { name: "Dubai, UAE", coords: [25.2048, 55.2708], song: "OMG", album: "OMG", reason: "Dubai loves NewJeans" },
   { name: "Istanbul, Turkey", coords: [41.0082, 28.9784], song: "Super Shy", album: "Get Up", reason: "Bridge between worlds" },
   
-  // Africa
   { name: "Cape Town, South Africa", coords: [-33.9249, 18.4241], song: "Attention", album: "New Jeans", reason: "Breaking into the market" },
 ];
 
@@ -607,3 +601,4 @@ const NewJeansMap = () => {
 
 
 export default NewJeansMap;
+
