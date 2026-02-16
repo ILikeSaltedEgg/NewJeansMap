@@ -524,7 +524,7 @@ const NewJeansMap = () => {
                       border: '2px solid #00ff88'
                     }}
                   >
-                    ✓ Submit 🐰
+                  
                   </button>
                   <button 
                     type="button" 
@@ -600,5 +600,6 @@ const NewJeansMap = () => {
 
 
 export default NewJeansMap;
+
 
 
