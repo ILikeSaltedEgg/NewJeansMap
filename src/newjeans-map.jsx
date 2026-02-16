@@ -2,15 +2,14 @@ import React, { useState } from 'react';
 import { MapContainer, TileLayer, CircleMarker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 
-// City data with NewJeans favorite songs
 const cityData = [
-  // North America
+
   { name: "New York, USA", coords: [40.7128, -74.0060], song: "Super Shy", album: "Get Up", reason: "NYC Bunnies love the energy!" },
   { name: "Los Angeles, USA", coords: [34.0522, -118.2437], song: "Hype Boy", album: "New Jeans", reason: "West Coast vibes" },
   { name: "Toronto, Canada", coords: [43.6532, -79.3832], song: "OMG", album: "OMG", reason: "Winter anthem here!" },
   { name: "Mexico City, Mexico", coords: [19.4326, -99.1332], song: "Attention", album: "New Jeans", reason: "Dance challenge went viral!" },
   
-  // South America
+
   { name: "São Paulo, Brazil", coords: [-23.5505, -46.6333], song: "Hype Boy", album: "New Jeans", reason: "TikTok sensation!" },
   { name: "Buenos Aires, Argentina", coords: [-34.6037, -58.3816], song: "Super Shy", album: "Get Up", reason: "Radio favorite" },
   { name: "Bogotá, Colombia", coords: [4.7110, -74.0721], song: "Attention", album: "New Jeans", reason: "Colombian Bunnies unite!" },
@@ -605,5 +604,6 @@ const NewJeansMap = () => {
     </div>
   );
 };
+
 
 export default NewJeansMap;
