@@ -59,7 +59,6 @@ const NewJeansMap = () => {
     submitterName: ''
   });
   
-  // Draggable info box state
   const [position, setPosition] = useState({ x: window.innerWidth - 420, y: 20 });
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
@@ -601,4 +600,5 @@ const NewJeansMap = () => {
 
 
 export default NewJeansMap;
+
 
